@@ -1,0 +1,217 @@
+:root {
+  --bg: #f1f2f6;
+  --ink: #000;
+  --muted: #555;
+  --gold: #e3b45c;
+  --line: #8a8a8a;
+  --rose: #e8a598;
+  --serif: "Gilda Display", Georgia, serif;
+  --italic: "Playfair Display", Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow-x: hidden;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
+/* The card keeps the Canva size ratio and fits the screen with the question below it. */
+.card {
+  --u: calc(100cqw / 396.85);
+  position: relative;
+  width: min(440px, 100%, (100dvh - 170px) * 396.85 / 559.37);
+  aspect-ratio: 396.85 / 559.37;
+  container-type: inline-size;
+  background: #fff url("img/background.png") center / cover no-repeat;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
+  animation: rise .9s ease-out both;
+}
+
+.card > * {
+  position: absolute;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.rings {
+  left: 41.83%;
+  top: 11.44%;
+  width: 13.86%;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.4;
+}
+
+.monogram,
+.names {
+  left: 0;
+  right: 0;
+  text-transform: uppercase;
+}
+.monogram {
+  top: 23.49%;
+  font-size: calc(24.73 * var(--u));
+  letter-spacing: calc(2.35 * var(--u));
+}
+.names {
+  top: 48.59%;
+  font-size: calc(19.25 * var(--u));
+  letter-spacing: calc(7.55 * var(--u));
+  padding-left: calc(7.55 * var(--u));
+}
+
+.invite {
+  left: 0;
+  right: 0;
+  top: 53.52%;
+  padding-left: calc(4.6 * var(--u));
+  font-size: calc(16.47 * var(--u));
+  line-height: calc(23 * var(--u));
+  letter-spacing: calc(4.6 * var(--u));
+}
+
+.day,
+.month,
+.year {
+  top: 64.2%;
+  width: 14.89%;
+  font-size: calc(22.54 * var(--u));
+  letter-spacing: calc(2.14 * var(--u));
+}
+.day { left: 21.34%; text-align: right; }
+.month { left: 42.69%; }
+.year { left: 63.85%; text-align: left; }
+
+.sep {
+  top: 63.36%;
+  width: 1px;
+  height: 6.47%;
+  background: var(--ink);
+}
+.sep--1 { left: 42.31%; }
+.sep--2 { left: 57.45%; }
+
+.place {
+  left: 0;
+  right: 0;
+  top: 76.64%;
+  padding-left: calc(4.4 * var(--u));
+  font-size: calc(14.67 * var(--u));
+  line-height: calc(20 * var(--u));
+  letter-spacing: calc(4.4 * var(--u));
+}
+
+.time,
+.hope {
+  left: 0;
+  right: 0;
+  padding-left: calc(4 * var(--u));
+  font-family: var(--italic);
+  font-style: italic;
+  font-size: calc(12 * var(--u));
+  line-height: calc(16 * var(--u));
+  letter-spacing: calc(4 * var(--u));
+}
+.time { top: 83.77%; }
+.hope {
+  top: 90.4%;
+}
+
+/* question */
+.question,
+.answer {
+  text-align: center;
+}
+.ask {
+  margin: 0 0 12px;
+  font-size: 22px;
+  letter-spacing: .12em;
+}
+.later {
+  margin: 0;
+  font-family: var(--italic);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: .1em;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  min-width: 110px;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 16px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.btn--yes {
+  background: var(--rose);
+  border: 1px solid var(--rose);
+  color: #fff;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn--yes:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(232, 165, 152, .5);
+}
+.btn--no {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  z-index: 10;
+}
+.btn--no.running {
+  position: fixed;
+  transition: left .25s ease, top .25s ease;
+}
+
+.answer .ask { animation: pop .6s ease-out both; }
+
+/* falling hearts */
+.heart {
+  position: fixed;
+  top: -40px;
+  z-index: 20;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); opacity: .2; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+}
+@keyframes pop {
+  0% { transform: scale(.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+}
