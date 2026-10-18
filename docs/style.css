@@ -1,3 +1,21 @@
+/* TT Barrels is not on Google Fonts. Put the licensed files into fonts/ to use it. */
+@font-face {
+  font-family: "TT Barrels";
+  src: local("TT Barrels"), local("TTBarrels-Regular"),
+    url("fonts/TTBarrels-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Barrels";
+  src: local("TT Barrels Italic"), local("TTBarrels-Italic"),
+    url("fonts/TTBarrels-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --bg: #f1f2f6;
   --ink: #000;
@@ -5,8 +23,8 @@
   --gold: #e3b45c;
   --line: #8a8a8a;
   --rose: #e8a598;
-  --serif: "Gilda Display", Georgia, serif;
-  --italic: "Playfair Display", Georgia, serif;
+  --serif: "TT Barrels", "Old Standard TT", Georgia, serif;
+  --italic: "TT Barrels", "Old Standard TT", Georgia, serif;
 }
 
 * { box-sizing: border-box; }
